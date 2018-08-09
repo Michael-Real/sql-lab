@@ -68,14 +68,13 @@ order by OrderDate desc
   
   - list orders grouped by customer showing the number of orders per customer.
   
-  
-  
+Select count(CustomerID), CustomerID From [Orders]
+Group By CustomerId order by count(CustomerId)
+
   - list orders grouped by customer's city showing number of orders per city.
-  
+    
   - add a customer using your information.
-  
-  - add 2 products.
-  
+
   - add 2 orders with you as the customer.
   
   - delete all customers that have no orders.
