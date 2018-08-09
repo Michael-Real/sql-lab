@@ -51,13 +51,24 @@ where PostalCode like '05021'
   
   - find all suppliers who have names with more than 20 characters.
   
-  
+SELECT * From Suppliers
+Where LENGTH(SupplierName) > 20
   
   - list customers descending by the number of orders.
   
+SELECT customerID, count(customerID) AS 'value_occurence'
+from Orders
+order by 'value_occurence' desc
+ 
   - list orders descending by the order date.
   
+select OrderID, OrderDate
+FROM [Orders]
+order by OrderDate desc
+  
   - list orders grouped by customer showing the number of orders per customer.
+  
+  
   
   - list orders grouped by customer's city showing number of orders per city.
   
