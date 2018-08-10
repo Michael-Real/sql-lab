@@ -72,11 +72,37 @@ Select count(CustomerID), CustomerID From [Orders]
 Group By CustomerId order by count(CustomerId)
 
   - list orders grouped by customer's city showing number of orders per city.
-    
-  - add a customer using your information.
-
-  - add 2 orders with you as the customer.
   
-  - delete all customers that have no orders.
+  Select count(Orders.CustomerID), Customers.City
+  From Orders
+  Inner Join Customers
+  On Orders.CustomerID = Customers.CustomerID
+  Group By Customers.city order by count(Orders.CustomerID)
+  
+  - add a customer using your information.
+  
+  Insert Into Customers (CustomerID, CustomerName, ContactName, Address, City, PostalCode, Country)
+  Values ({CustomerID}, '{CustomerName}', '{ContactName}', '{Address}', '{City}', {PostalCode}, '{Country}')
+
+ - add 2 products.
+
+  Insert Into Products (ProductID, ProductName, SupplierID, CategoryID, Unit, Price)
+  Values ({ProductID}, '{ProductName}', {SupplierID}, {CategoryID}, '{Unit}', {Price})
+  
+ - add 2 orders with you as the customer.
+ 
+  Insert Into Orders (OrderID, CustomerID, EmployeeID, OrderDate, ShipperID)
+  Values ({OrderID}, {CustomerID}, {EmployeeID}, {OrderDate}, {ShipperID})
+  
+  *Done twice
+  
+ - delete all users that have no orders.
+ 
+  Delete From Customers
+  Where CustomerID in(
+  Select customers.CustomerID
+  From Customers LEFT Join Orders
+  On Customers.CustomerID = Orders.CustomerID
+  where orderID is null)
 
 Clicking the `Restore Database` in that page will repopulate the database with the original data and discard all changes you have made.
